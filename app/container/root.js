@@ -1,46 +1,64 @@
 import React, { Component } from 'react';
+
 import {
   StyleSheet,
+  Navigator,
+  StatusBar,
   Text,
   View
 } from 'react-native';
 
+import Splash from '../pages/splash';
+
 class CrossKrAxe extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {};
+  }
+
+  renderScene(route, navigator) {
+    return (
+      <route.component navigator={navigator}  {...route.passProps} />
+    );
+  }
+
+  configureScene(route, routeStack) {
+    return Navigator.SceneConfigs.VerticalUpSwipeJump;
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
+        <StatusBar
+          barStyle='light-content'
+          backgroundColor='transparent'
+        />
+        <Navigator
+          style={styles.navigator}
+          configureScene={this.configureScene}
+          renderScene={this.renderScene}
+          initialRoute={{
+            component: Splash,
+            name: 'Splash'
+          }}
+        />
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  navigator: {
+    flex: 1,
+  },
+
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+    /*alignItems: 'center',*/
+    backgroundColor: 'blue',
+  }
 });
 
 export default CrossKrAxe;
