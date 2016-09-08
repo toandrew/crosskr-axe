@@ -1,5 +1,5 @@
 /**
- * Sample React Native App s
+ * Sample React Native App
  * https://github.com/facebook/react-native
  * @flow
  */
