@@ -1,14 +1,12 @@
-'use strict';
-
 import React, {Component} from 'react';
 import {
   View,
   Text,
-  StyleSheet
+  StyleSheet,
 } from 'react-native';
 
-class Home extends Component {
-  constructor(props){
+class Cart extends Component {
+  constructor(props) {
     super(props);
 
     this.state = {
@@ -20,7 +18,7 @@ class Home extends Component {
     return (
       <View>
         <Text>
-          This is home page!
+          This is cart view!
         </Text>
       </View>
     );
@@ -31,4 +29,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default Home;
+export default Cart

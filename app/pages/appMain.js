@@ -9,13 +9,17 @@ import {
 } from 'react-native';
 import TabNavigator from 'react-native-tab-navigator';
 
-import Home from './home'
+import Home from './home';
+import Cart from './cart';
+import Order from './order';
+import Center from './center';
 
 class AppMain extends Component {
 	constructor(props) {
 	  super(props);
 
 	  this.state = {
+			selectedTab: 'home'
 		};
 	}
 
@@ -29,7 +33,7 @@ class AppMain extends Component {
 					titleStyle={styles.textStyle}
 					renderIcon={() => <Image source={require('../imgs/ic_tab_home.png')} style={styles.iconStyle}/>}
 					renderSelectedIcon={() => <Image source={require('../imgs/ic_tab_home_press.png')} style={styles.iconStyle}/>}
-					onProgress={() => this.setState({selectedTab: 'home'})}
+					onPress={() => this.setState({selectedTab: 'home'})}
 				>
 				<Home {...this.props}/>
 				</TabNavigator.Item>
@@ -41,8 +45,8 @@ class AppMain extends Component {
 					titleStyle={styles.textStyle}
 					renderIcon={() => <Image source={require('../imgs/ic_tab_order.png')} style={styles.iconStyle}/>}
 					renderSelectedIcon={() => <Image source={require('../imgs/ic_tab_order_press.png')} style={styles.iconStyle}/>}
-					onProgress={() => this.setState({selectedTab: 'order'})}
-				>
+					onPress={() => this.setState({selectedTab: 'order'})}>
+					<Order {...this.props} />
 				</TabNavigator.Item>
 
 				<TabNavigator.Item
@@ -51,9 +55,9 @@ class AppMain extends Component {
 					selectedTitleStyle={styles.selectedTextStyle}
 					titleStyle={styles.textStyle}
 					renderIcon={() => <Image source={require('../imgs/ic_tab_cart.png')} style={styles.iconStyle}/>}
-					renderSelectedIcon={() => <Image source={require('../imgs/ic_tab_cart_press')} style={styles.iconStyle}/>}
-					onProgress={() => this.setState({selectedTab: 'cart'})}
-				>
+					renderSelectedIcon={() => <Image source={require('../imgs/ic_tab_cart_press.png')} style={styles.iconStyle}/>}
+					onPress={() => this.setState({selectedTab: 'cart'})}>
+					<Cart {...this.props} />
 				</TabNavigator.Item>
 
 				<TabNavigator.Item
@@ -63,8 +67,8 @@ class AppMain extends Component {
 					titleStyle={styles.textStyle}
 					renderIcon={() => <Image source={require('../imgs/ic_tab_center.png')} style={styles.iconStyle}/>}
 					renderSelectedIcon={() => <Image source={require('../imgs/ic_tab_center_press.png')} style={styles.iconStyle}/>}
-					onProgress={() => this.setState({selectedTab: 'center'})}
-				>
+					onPress={() => this.setState({selectedTab: 'center'})}>
+					<Center {...this.props}/>
 				</TabNavigator.Item>
 			</TabNavigator>
 		);
